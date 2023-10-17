@@ -1,0 +1,183 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* 
+scrollbar */
+
+/* Estilos globales para la barra de desplazamiento */
+/* Cambia estos estilos según tus preferencias */
+body::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color del fondo de la pista de la barra */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #ff010173; /* Color del "pulgar" de la barra */
+    border-radius: 5px; /* Borde redondeado del "pulgar" */
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del "pulgar" al pasar el cursor sobre él */
+  }
+  
+
+nav{
+    height: 80px;
+    background-color: black;
+}
+nav ul{
+    display: flex;
+    justify-content: center;
+}
+nav li{
+    margin: 30px;
+    list-style: none;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: red;
+}
+
+.c-item{
+    height: 500px;
+}
+
+.c-img{
+    height: 100%;
+    object-fit: fit;
+}
+
+
+
+/* HOME PAGE */
+
+.home-background_container {
+    position: relative;
+    height: 70vh; /* 70% del alto de la ventana visible */
+    width: 100%; /* 100% del ancho de la ventana visible */
+    background-image: url('./assets/imagenes/bustos4.jpeg'); /* Cambia esto a la ruta de tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    opacity: 1; /* Opacidad completa */
+  }
+  
+  /* Estilos para el contenido sobre el fondo */
+.home-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: rgba(0, 0, 0, 0.2); /* Color de fondo semi-opaco */
+  }
+  
+.home-title_container{
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: start;
+    margin: 1rem;
+  }
+
+.home-title_container h1{
+    font-size: 1.5rem;
+    margin: 0 5px;
+    color: #000000;
+  }
+
+.home-title_container h1:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.home-title_container img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+  }
+
+
+.home-subtitle{
+    color: #666;
+}
+
+
+
+.home-section_marcas{
+    margin:  5rem 0;
+    padding: 6rem;
+    background-color: #000000;
+
+}
+.marca{
+    color: white;
+}
+.adminBtn{
+    color: black;
+    text-decoration: none;
+}
+
+.adminBtn:hover{
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
+}
+
+
+
+.card {
+    width: 18rem;
+}
+
+.carrito{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 10px;
+    margin-left: 3em ;
+    position: absolute;
+    width: 60px;
+
+    height: 60px;
+}
+
+
+.linkComprar{
+    color: red;
+    font-size: large;
+    text-decoration: underline;
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+}
+
+.linkComprar:hover{
+    color: rgb(182, 0, 0);
+}
+
+
+
+
+/* FOOTER */
+.footer-container{
+    background-color: #000000;
+    color: white;
+}
+
+.footerLogo{
+    cursor: pointer;
+}
