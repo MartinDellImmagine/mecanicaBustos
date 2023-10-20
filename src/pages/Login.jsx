@@ -1,4 +1,6 @@
-import React from 'react';
+
+import Swal from 'sweetalert2'
+
 import { useState } from 'react';
 import NavBar from '../components/NavBar';
 import { login } from '../config/firebase';
@@ -25,11 +27,17 @@ const Login = () => {
       
         const handleSignIn = async (e) => {
             e.preventDefault()
-            console.log('test');
-            console.log(email, password);
 
 
             try {
+                if (email.trim() === '' && password.trim() === ''){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Rellene los campos solicitados!',
+                      })
+
+                }
                 const credentialUser = await login({ email, password })
     
         
@@ -37,6 +45,11 @@ const Login = () => {
                 console.log('logeado');
             } catch (error) {
                 console.log(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error al iniciar sesion',
+                  })
             }
         }
         
@@ -53,16 +66,17 @@ const Login = () => {
                         
                 <form className='container'>
                 <div>
-                    <h2>Inicio de sesión</h2>
+                    <h2 className='text-center'>Iniciar sesión</h2>
                     <div>
                         <label>Email:</label>
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input className='form-control' type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div>
                         <label>Contraseña:</label>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input className='form-control' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button onClick={handleSignIn}>Iniciar sesión</button>
+                   
+                    <button className='btn btn-primary my-2' onClick={handleSignIn}>Iniciar sesión</button>
                     {error && <div>{error}</div>}
                     </div>
                 </form>

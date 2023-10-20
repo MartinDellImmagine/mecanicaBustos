@@ -1,5 +1,6 @@
 
 import NavBar from '../components/NavBar';
+import 'animate.css';
 import { useUserContext } from '../context/UserContext';
 
 import BustosLogo from '../assets/imagenes/bustos2.jpeg'
@@ -17,8 +18,8 @@ const Home = () => {
 
         <div className="home-background_container">
           <div className="home-content">
-            <div className='home-title_container'>
-                <img src={BustosLogo} alt="" />
+            <div className='animate__animated animate__fadeInLeft home-title_container'>
+                <img src={BustosLogo} alt="MecanicaBustoslogo" />
                 <h1 className='home-title'>MECANICA BUSTOS</h1>
             </div>
           </div>

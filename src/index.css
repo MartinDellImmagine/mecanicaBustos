@@ -1,7 +1,6 @@
 body{
     margin: 0;
     padding: 0;
-    width: 100%;
     font-family: Arial, sans-serif;
 }
 
@@ -27,26 +26,9 @@ body::-webkit-scrollbar {
     background: #555; /* Color del "pulgar" al pasar el cursor sobre él */
   }
   
-
-nav{
-    height: 80px;
-    background-color: black;
-}
-nav ul{
-    display: flex;
-    justify-content: center;
-}
-nav li{
-    margin: 30px;
-    list-style: none;
-}
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover{
-    color: red;
+.navLogo {
+    width: 20px;
+    height: 20px;
 }
 
 .c-item{
@@ -99,10 +81,6 @@ nav a:hover{
     color: #000000;
   }
 
-.home-title_container h1:hover{
-    text-decoration: underline;
-    cursor: pointer;
-}
 
 
 .home-title_container img{

@@ -96,7 +96,7 @@ const Repuestos = () => {
 
   return (
     <>
-      <NavBar />
+      
       <Modal carrito={carrito} handleRemove={handleRemove} handlePurchase={handlePurchase}/>
 
 
