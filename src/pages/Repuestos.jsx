@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import { onValue, ref } from "firebase/database";
 import { db } from "../config/firebase";
-
+import Footer from "../components/Footer";
 import Modal from "../components/Modal";
 import { useNavigate } from "react-router-dom";
 
@@ -96,7 +96,7 @@ const Repuestos = () => {
 
   return (
     <>
-      
+       <NavBar />
       <Modal carrito={carrito} handleRemove={handleRemove} handlePurchase={handlePurchase}/>
 
 
@@ -145,6 +145,7 @@ const Repuestos = () => {
           ))}
         </div>
       </div>
+      
     </>
   );
 };

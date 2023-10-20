@@ -4,7 +4,7 @@ import 'animate.css';
 import { useUserContext } from '../context/UserContext';
 
 import BustosLogo from '../assets/imagenes/bustos2.jpeg'
-import FrenosFoto from '../assets/imagenes/frenos.jpeg'
+
 import Footer from '../components/Footer';
 
 
@@ -75,7 +75,7 @@ const Home = () => {
                 </div>
             </div>
             
-            <main>{user && <h1>Bienvenido al sitio {user.email}</h1>}</main>
+            
 
         <Footer />
       </>

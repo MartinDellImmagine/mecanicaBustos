@@ -31,6 +31,9 @@ body::-webkit-scrollbar {
     height: 20px;
 }
 
+.bi {
+  cursor: pointer;
+}
 .c-item{
     height: 500px;
 }
