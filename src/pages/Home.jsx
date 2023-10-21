@@ -4,7 +4,7 @@ import 'animate.css';
 import { useUserContext } from '../context/UserContext';
 
 import BustosLogo from '../assets/imagenes/bustos2.jpeg'
-
+import cuidamosTiempo from '../assets/imagenes/cuidamostutiempo .svg'
 import Footer from '../components/Footer';
 
 
@@ -17,12 +17,15 @@ const Home = () => {
         <NavBar />
 
         <div className="home-background_container">
+           
           <div className="home-content">
             <div className='animate__animated animate__fadeInLeft home-title_container'>
                 <img src={BustosLogo} alt="MecanicaBustoslogo" />
                 <h1 className='home-title'>MECANICA BUSTOS</h1>
             </div>
           </div>
+
+          <img src={cuidamosTiempo} alt="" />
         </div>
 
  

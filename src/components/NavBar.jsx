@@ -43,11 +43,14 @@ const NavBar = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/turnos">Turnos</a>
-            </li>
+            </li>       
             {
                 user ? user.email === "test@test.com" ?  <li className="nav-item"><a className="nav-link" href='/admin'>Panel Administracion</a> </li> : console.log('') : null
             }
-   
+       
+            {
+                user ? <li className="nav-item"><a onClick={handleLogout} className="nav-link d-md-none " href="/">Cerrar Sesión</a></li> :  <li className="nav-item"><a className="nav-link d-md-none " href="/login">Iniciar Sesión</a></li>
+            }
           </ul>
 
           <hr className="d-md-none text-white-50" />
@@ -91,8 +94,8 @@ const NavBar = () => {
           <form className="d-flex">
           {
                 user ?  <button  onClick={handleLogout} className="btn btn-outline-danger d-none d-md-inline-block" type="button">Cerrar Sesion</button> :   <button onClick={()=> navigate('/login')} className="btn btn-outline-primary d-none d-md-inline-block" type="button">Iniciar Sesion</button>
-        }
-    
+          }
+          
           </form>
         </div>
      

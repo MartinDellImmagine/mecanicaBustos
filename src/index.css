@@ -48,34 +48,28 @@ body::-webkit-scrollbar {
 /* HOME PAGE */
 
 .home-background_container {
-    position: relative;
     height: 70vh; /* 70% del alto de la ventana visible */
     width: 100%; /* 100% del ancho de la ventana visible */
-    background-image: url('./assets/imagenes/bustos4.jpeg'); /* Cambia esto a la ruta de tu imagen de fondo */
+    background-color: rgba(0, 0, 0, 0.2); /* Color de fondo semi-opaco */
     background-size: cover;
     background-position: center;
     opacity: 1; /* Opacidad completa */
   }
   
-  /* Estilos para el contenido sobre el fondo */
-.home-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    background-color: rgba(0, 0, 0, 0.2); /* Color de fondo semi-opaco */
+  img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+    padding: 5px;
   }
+  /* Estilos para el contenido sobre el fondo */
   
 .home-title_container{
     display: flex;
     align-self: flex-start;
     align-items: center;
     justify-content: start;
-    margin: 1rem;
+    padding: 1rem;
   }
 
 .home-title_container h1{
@@ -109,6 +103,9 @@ body::-webkit-scrollbar {
 .marca{
     color: white;
 }
+
+
+/* ADMIN PANEL */
 .adminBtn{
     color: black;
     text-decoration: none;
@@ -122,36 +119,36 @@ body::-webkit-scrollbar {
 
 
 
-.card {
-    width: 18rem;
+
+/* Repuestos */
+
+
+.card-img-top{
+  border-radius: 50px;
+  padding: 20px;
 }
-
-.carrito{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin: 10px;
-    margin-left: 3em ;
-    position: absolute;
-    width: 60px;
-
-    height: 60px;
+.card{
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.card-body{
+  padding: 25px;
+  margin-top: -15px;
 }
 
 
 .linkComprar{
-    color: red;
-    font-size: large;
-    text-decoration: underline;
-    cursor: pointer;
-    width: fit-content;
-    margin: auto;
+  color: red;
+  font-size: large;
+  text-decoration: underline;
+  cursor: pointer;
+  width: fit-content;
+  margin: auto;
 }
 
 .linkComprar:hover{
-    color: rgb(182, 0, 0);
+  color: rgb(182, 0, 0);
 }
-
-
-
 
 /* FOOTER */
 .footer-container{

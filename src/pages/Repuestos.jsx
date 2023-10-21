@@ -97,7 +97,10 @@ const Repuestos = () => {
   return (
     <>
        <NavBar />
-      <Modal carrito={carrito} handleRemove={handleRemove} handlePurchase={handlePurchase}/>
+
+              <Modal carrito={carrito} handleRemove={handleRemove} handlePurchase={handlePurchase}/>
+      
+     
 
 
       {/*  Barra de busqueda */}
@@ -115,12 +118,9 @@ const Repuestos = () => {
         Pintar los productos */}
         <div className="row row-cols-1 row-cols-md-4 g-4 py-5">
           {
-        
-          
-          
           productosFiltrados.map((producto) => (
             <div className="col" key={producto.uuid}>
-              <div className="card ">
+              <div className="card">
                 <img
                   src={producto.imagen}
                   className="card-img-top"
