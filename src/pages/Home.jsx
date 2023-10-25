@@ -54,13 +54,13 @@ const Home = () => {
             
             <div className='home-section_marcas'>
                 <h5 className='home-subtitle text-center mb-5'>MARCAS TRABAJADAS</h5>
-                <div className='d-flex justify-content-center mt-5'>
-                        <h3 className='marca'>MARCA</h3>
-                        <h3 className='marca'>MARCA</h3>
-                        <h3 className='marca'>MARCA</h3>
-                        <h3 className='marca'>MARCA</h3>
-                        <h3 className='marca'>MARCA</h3>
-                </div>
+                <ul className="list-inline text-center">
+                    <li className="list-inline-item display-4">MARCA</li>
+                    <li className="list-inline-item display-4">MARCA</li>
+                    <li className="list-inline-item display-4">MARCA</li>
+                    <li className="list-inline-item display-4">MARCA</li>
+                  
+                </ul>
             </div>
             
             <hr />
@@ -73,7 +73,7 @@ const Home = () => {
                         <p className='lead'>Saca tu turno para un chequeo en el momento.</p>
                     </div>
                     <div className='col-md-5'>
-                        <button className='btn btn-link'>Cliquea aca para sacar tu turno</button>
+                        <button className='btn btn-outline-danger'>Cliquea aca para sacar tu turno</button>
                     </div>
                 </div>
             </div>
