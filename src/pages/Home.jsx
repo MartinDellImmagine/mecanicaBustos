@@ -15,7 +15,6 @@ const Home = () => {
     return (
       <>
         <NavBar />
-
         <div className="home-background_container">
            
           <div className="home-content">

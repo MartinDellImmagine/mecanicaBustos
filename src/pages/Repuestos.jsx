@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import { onValue, ref } from "firebase/database";
 import { db } from "../config/firebase";
-import Footer from "../components/Footer";
+import FiltrosRepuestos from "../components/FiltrosRepuestos";
 import Modal from "../components/Modal";
 import { useNavigate } from "react-router-dom";
 
@@ -84,7 +84,7 @@ const Repuestos = () => {
     return (
       <>
         <NavBar />
-        <div className="mt-5">
+        <div className="mt-2">
           <div className="d-flex justify-content-center mt-5">
             <div className="spinner-border" role="status">
               <span className="visually-hidden">Loading...</span>
@@ -96,26 +96,42 @@ const Repuestos = () => {
 
   return (
     <>
-       <NavBar />
-
-              <Modal carrito={carrito} handleRemove={handleRemove} handlePurchase={handlePurchase}/>
       
+      <NavBar />
+
+       {/*  Barra de busqueda */}
+      
+      <div className="container mt-5">
+        <div className="d-flex">
+          
+          <div className="input-group mb-3">
+            <FiltrosRepuestos />
+            
+            <input
+               className="form-control mr-sm-2 mt-2"
+               type="search"
+               placeholder="Ingrese el nombre de un producto"
+               aria-label="Search"
+               name="busqueda"
+               onChange={(e)=>setBusqueda(e.target.value)}
+             />
+     
+           </div>
+           <Modal carrito={carrito} handleRemove={handleRemove} handlePurchase={handlePurchase}/>
+           
+            
+        </div>
+      
+  
+
+
      
 
 
-      {/*  Barra de busqueda */}
-      <div className="container">
-        <input
-          className="form-control mr-sm-2 mt-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          name="busqueda"
-          onChange={(e)=>setBusqueda(e.target.value)}
-        />
+        {/* Pintar los productos */}
+      
+      
 
-        {/* 
-        Pintar los productos */}
         <div className="row row-cols-1 row-cols-md-4 g-4 py-5">
           {
           productosFiltrados.map((producto) => (
@@ -126,13 +142,14 @@ const Repuestos = () => {
                   className="card-img-top"
                   alt={producto.nombre}
                 />
+           
                 <div className="card-body">
-                  <h5 className="card-title text-center">{producto.nombre}</h5>
-                  <p className="card-text">{producto.descripcion}</p>
+                <h5 className="card-title text-center">{producto.nombre.toUpperCase()}</h5>
+                  <hr />
+                  <p className="card-text text-center">{producto.descripcion}</p>
                 </div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item">An item</li>
-                  <li className="list-group-item">${producto.precio}</li>
+                  <li className="list-group-item text-center display-6">${producto.precio}</li>
                 </ul>
                 <button
                   className="btn btn-success"
@@ -144,8 +161,11 @@ const Repuestos = () => {
             </div>
           ))}
         </div>
-      </div>
+        </div>
+        
+     
       
+    
     </>
   );
 };

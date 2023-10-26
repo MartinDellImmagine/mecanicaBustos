@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 import NavBar from '../components/NavBar'
 import { useNavigate } from 'react-router-dom';
@@ -62,7 +62,7 @@ export default function FinalizarCompra() {
     <div>
       <NavBar />
       <div className="container">
-        
+        <h1 className='text-center'>Finalizar compra</h1>
         {
           carrito.length > 0 ?  pintarCarrito(carrito) :<></> 
     
