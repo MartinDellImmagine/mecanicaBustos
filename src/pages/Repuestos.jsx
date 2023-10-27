@@ -8,33 +8,49 @@ import Modal from "../components/Modal";
 import { useNavigate } from "react-router-dom";
 
 const Repuestos = () => {
-  const [busqueda, setBusqueda] = useState('') 
+  const [busqueda, setBusqueda] = useState("");
   const [carrito, setCarrito] = useState([]);
   const [productos, setProductos] = useState([]);
-  const navigate = useNavigate()
+  const [filtrarCategorias, setFiltrarCategorias] = useState([]);
 
-  const productosFiltrados = productos.filter(producto =>
-    producto.nombre.toLowerCase().includes(busqueda.toLowerCase())
-  );
+  const navigate = useNavigate();
 
+  //filtrar productos
 
+  const productosFiltrados =
+    filtrarCategorias.length > 0
+      ? productos.filter(
+          (producto) =>
+            producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) &&
+            filtrarCategorias.some((str) =>
+              producto.categoria.toLowerCase().includes(str)
+            )
+        )
+      : productos.filter((producto) =>
+          producto.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        );
 
+  const handleFilterCategorias = (e) => {
+    e.target.checked
+      ? setFiltrarCategorias([...filtrarCategorias, e.target.id.toLowerCase()])
+      : setFiltrarCategorias(
+          filtrarCategorias.filter(
+            (selectedId) => selectedId !== e.target.id.toLowerCase()
+          )
+        );
+  };
 
-      //borrar del carrito
-      const handleRemove = (uuid) => {
-        const nuevoCarrito = carrito.filter((producto) => producto.uuid !== uuid);
-        setCarrito(nuevoCarrito);
-      };
-      
-        //finalizar compra
-        const handlePurchase = ()=>{
-            localStorage.setItem('MecanicaBustosCarrito', JSON.stringify(carrito))
-            navigate('/comprar')
-          }
-        
-      
+  //borrar del carrito
+  const handleRemove = (uuid) => {
+    const nuevoCarrito = carrito.filter((producto) => producto.uuid !== uuid);
+    setCarrito(nuevoCarrito);
+  };
 
-
+  //finalizar compra
+  const handlePurchase = () => {
+    localStorage.setItem("MecanicaBustosCarrito", JSON.stringify(carrito));
+    navigate("/comprar");
+  };
 
   //Sumar productos al carrito
   const handleAdd = (producto) => {
@@ -53,13 +69,9 @@ const Repuestos = () => {
     } else {
       setCarrito([...carrito, { ...producto, cantidad: 1 }]);
     }
-
-    
   };
 
-
-
-  //leer los producots
+  //leer los productos
   useEffect(() => {
     onValue(ref(db, `/productos`), (snapshot) => {
       setProductos([]);
@@ -69,15 +81,10 @@ const Repuestos = () => {
           setProductos((oldArray) => [...oldArray, producto]);
         });
       } else {
-        console.log("quilombo");
+        console.error("Error al cargar los productos");
       }
     });
   }, []);
-
-
-
-
-
 
   //Spinner de carga
   if (productos.length == 0)
@@ -96,45 +103,38 @@ const Repuestos = () => {
 
   return (
     <>
-      
       <NavBar />
 
-       {/*  Barra de busqueda */}
-      
+      {/*  Barra de busqueda */}
+
       <div className="container mt-5">
         <div className="d-flex">
-          
           <div className="input-group mb-3">
-            <FiltrosRepuestos />
-            
+            <FiltrosRepuestos
+              productos={productos}
+              handleFilterCategorias={handleFilterCategorias}
+            />
+
             <input
-               className="form-control mr-sm-2 mt-2"
-               type="search"
-               placeholder="Ingrese el nombre de un producto"
-               aria-label="Search"
-               name="busqueda"
-               onChange={(e)=>setBusqueda(e.target.value)}
-             />
-     
-           </div>
-           <Modal carrito={carrito} handleRemove={handleRemove} handlePurchase={handlePurchase}/>
-           
-            
+              className="form-control mr-sm-2 mt-2"
+              type="search"
+              placeholder="Ingrese el nombre de un producto"
+              aria-label="Search"
+              name="busqueda"
+              onChange={(e) => setBusqueda(e.target.value)}
+            />
+          </div>
+          <Modal
+            carrito={carrito}
+            handleRemove={handleRemove}
+            handlePurchase={handlePurchase}
+          />
         </div>
-      
-  
-
-
-     
-
 
         {/* Pintar los productos */}
-      
-      
 
         <div className="row row-cols-1 row-cols-md-4 g-4 py-5">
-          {
-          productosFiltrados.map((producto) => (
+          {productosFiltrados.map((producto) => (
             <div className="col" key={producto.uuid}>
               <div className="card">
                 <img
@@ -142,14 +142,20 @@ const Repuestos = () => {
                   className="card-img-top"
                   alt={producto.nombre}
                 />
-           
+
                 <div className="card-body">
-                <h5 className="card-title text-center">{producto.nombre.toUpperCase()}</h5>
+                  <h5 className="card-title text-center">
+                    {producto.nombre.toUpperCase()}
+                  </h5>
                   <hr />
-                  <p className="card-text text-center">{producto.descripcion}</p>
+                  <p className="card-text text-center">
+                    {producto.descripcion}
+                  </p>
                 </div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item text-center display-6">${producto.precio}</li>
+                  <li className="list-group-item text-center display-6">
+                    ${producto.precio}
+                  </li>
                 </ul>
                 <button
                   className="btn btn-success"
@@ -161,11 +167,7 @@ const Repuestos = () => {
             </div>
           ))}
         </div>
-        </div>
-        
-     
-      
-    
+      </div>
     </>
   );
 };
