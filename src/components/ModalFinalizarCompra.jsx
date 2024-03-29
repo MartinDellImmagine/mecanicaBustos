@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Swal from "sweetalert2";
 
 
 export default function ModalFinalizarCompra() {
@@ -9,20 +10,31 @@ export default function ModalFinalizarCompra() {
     
     
     const [datos, setDatos] = useState({
-        email: 'Email',
-        direccion : 'direccion',
+        email: '',
+        direccion : '',
         metodoPago: 'Efectivo',
-        nombre: 'Nombre',
-        apellido: 'Apellido',
+        nombre: '',
+        apellido: '',
     })
 
     const handleSubmit =(e) =>{
         e.preventDefault()
-        const encodedMessage = encodeURIComponent(mensaje);
+        
+        if (datos.email.trim() === '' || datos.direccion.trim() === '' || datos.nombre.trim() === '' || datos.apellido.trim() === ''){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Rellene los campos solicitados!',
+                  })
+                  return
 
+            }
+            
 
-       window.location.href = `https://wa.me/+542346617430?text=${encodedMessage}`
-
+            const encodedMessage = encodeURIComponent(mensaje);
+            window.location.href = `https://wa.me/+542346617430?text=${encodedMessage}`
+    
+     
     }
 
     const handleChange = event => {
@@ -53,15 +65,15 @@ export default function ModalFinalizarCompra() {
                 
                 
                     <div className="mb-3  d-flex">
-                        <input className="form-control" type="text" name="nombre" placeholder="nombre" value={datos.nombre} onChange={handleChange} />
-                        <input className="form-control" type="text" name="apellido"  placeholder="apellido" value={datos.apellido} onChange={handleChange} />
+                        <input className="form-control" type="text" name="nombre" placeholder="Nombre*" value={datos.nombre} onChange={handleChange} />
+                        <input className="form-control" type="text" name="apellido"  placeholder="Apellido*" value={datos.apellido} onChange={handleChange} />
                     </div>
                     <div className="mb-3">
-                        <input className="form-control" type="text" name="email" placeholder="email" value={datos.email} onChange={handleChange} />
+                        <input className="form-control" type="email" name="email" placeholder="Email*" value={datos.email} onChange={handleChange} />
                     </div>
 
                     <div className="mb-3">
-                        <input className="form-control" type="text" name="direccion"  placeholder="direccion" value={datos.direccion} onChange={handleChange} />
+                        <input className="form-control" type="text" name="direccion"  placeholder="Dirección*" value={datos.direccion} onChange={handleChange} />
 
                     </div>
                     <div className="mb-3">
